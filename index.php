@@ -1,4 +1,10 @@
 <?php
+
+
+class botaoEntrar{ 
+  $mostrar_botao = false;
+}   
+
 date_default_timezone_set('America/Sao_Paulo');
 
 $mensagem = "";
@@ -7,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
     $erroTamanho = false;
+    
 
       if (strlen($usuario) < 4 || strlen($usuario) > 15) {
         $mensagem .= "Erro: o nome de usuário deve ter entre 4 e 15 caracteres.<br>";
@@ -22,23 +29,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($erroTamanho == false) {
 
       if (($usuario == "PROFESSOR" || $usuario == "COORDENADOR") && $senha == "DEVISATE") {
+
             $data = date("d/m/Y");
              $hora = date("H:i");
              $mensagem = "Bem-vindo, $usuario! Você realizou acesso às $hora no dia $data.";
-         } elseif ($usuario != "PROFESSOR" && $usuario != "COORDENADOR" && $senha != "DEVISATE") {
+
+
+
+         }
+
+         
+         
+         elseif 
+         ($usuario != "PROFESSOR" && $usuario != "COORDENADOR" && $senha != "DEVISATE") {
+
             $mensagem = "Erro: nome de usuário e senha inválidos.";
-         } elseif ($usuario != "PROFESSOR" && $usuario != "COORDENADOR") {
+         } elseif
+
+
+          ($usuario != "PROFESSOR" && $usuario != "COORDENADOR") {
        $mensagem = "Erro: nome de usuário inválido.";
-         } else {
+
+         } else
+          {
             $mensagem = "Erro: senha incorreta.";
         }
 
-     } 
+       if (($usuario == "PROFESSOR" || $usuario == "COORDENADOR") && $senha == "DEVISATE") {
+
+            $mostrar_botao = true;
+
+
+
+         }
+  
+  
+        } 
 }
 
 
 
+
 ?>
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -54,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
            <br>
-        <label>Senha: </label>
+        <label>Senha:    </label>
         <input type="password" name="senha" required>
 
             <br>
@@ -62,6 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     <p><b><?php echo $mensagem; ?></b></p> 
+
+
+    
 
 </body>
 </html>
