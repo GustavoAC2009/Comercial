@@ -1,9 +1,17 @@
 <?php
 
 
-class botaoEntrar{ 
-  $mostrar_botao = false;
-}   
+
+
+
+$mostrarBotao = 0;
+
+
+
+
+
+
+
 
 date_default_timezone_set('America/Sao_Paulo');
 
@@ -33,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = date("d/m/Y");
              $hora = date("H:i");
              $mensagem = "Bem-vindo, $usuario! Você realizou acesso às $hora no dia $data.";
-
+            $mostrarBotao = 1;
 
 
          }
@@ -57,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
        if (($usuario == "PROFESSOR" || $usuario == "COORDENADOR") && $senha == "DEVISATE") {
 
-            $mostrar_botao = true;
+            
 
 
 
@@ -99,7 +107,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <button type="submit">Entrar</button>
     </form>
 
-    <p><b><?php echo $mensagem; ?></b></p> 
+    <p><?php echo $mensagem; ?><br></p> 
+
+    
+
+<?php if ($mostrarBotao == 1): ?>
+    <button type="button"><a href="https://www.google.com">Entrar</a></button>
+    
+
+<?php endif; ?>
+
+
 
 
     
